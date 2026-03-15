@@ -70,6 +70,7 @@ while True:
 
                     if d < 0:
                         print("Нет корней")
+                        
                     elif d == 0:
                         x = (-b) / (2 * a)
                         x = round(x, 2)
