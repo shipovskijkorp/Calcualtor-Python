@@ -122,7 +122,7 @@ while True:
                 print("Ненайдена операция")
 
         elif choice == 'info':
-            print("Версия калькулятора на языке Python\nВерсия: 2.8.5 \nАвтор: ShipovskijKorp\ndevblog: 16\nTg: https://t.me/+_9Ho35Hbbe8zOTEy")
+            print("Версия калькулятора на языке Python\nВерсия: 2.8.6 \nАвтор: ShipovskijKorp\ndevblog: 17\nTg: https://t.me/+_9Ho35Hbbe8zOTEy")
 
         elif choice == 'dop':
             choice = input("\nВыбери: \nconv для конвертаций \nimb для индекса массы тела \nstg для генерации историй \nrps для игры камень ножницы бумага \ndev для функций разработчика\n").strip().lower()
@@ -230,15 +230,29 @@ while True:
                 dev = input("2st для вывода 2 значных в столбик \n3st для вывода 3 значных в столбик \nkib для киберone \nEoO для сравнения кто старше\n").strip().lower()
 
                 if dev == '2st':
+                    accept = False
+                    pm = 1
                     zn2 = int(input("Введи 2 значное число: "))
-                    if zn2 < 10 or zn2 > 99:
+                    if zn2 < -9 and zn2 > -100:
+                        accept = True
+                        pm = -1
+                    elif zn2 > 9 and zn2 < 100:
+                        accept = True
+                        pm = 1
+                    else:    
                         print("Это не 2 значное число")
+                        accept = False
                         continue
-                    print("Результат: ")
-                    a1 = zn2//10
-                    print(a1)
-                    a2 = zn2 % 10
-                    print(a2)
+
+                    if accept == True:
+                        zn2 *= pm
+                        print("Результат: ")
+                        if pm == -1:
+                            print("-")
+                        a1 = zn2//10
+                        print(a1)
+                        a2 = zn2 % 10
+                        print(a2)
 
                     dev1answer = input("Хотите сумму? (да/нет): ").strip().lower()
 
@@ -253,17 +267,31 @@ while True:
                         print("Ненайдена операция")
 
                 elif dev == '3st':
+                    accept = False
+                    pm = 1
                     zn3 = int(input("Введи 3 значное число: "))
-                    if zn3 < 100 or zn3 > 999:
+                    if zn3 < -99 and zn3 > -1000:
+                        accept = True
+                        pm = -1
+                    elif zn3 > 99 and zn3 < 1000:
+                        accept = True
+                        pm = 1
+                    else:    
                         print("Это не 3 значное число")
+                        accept = False
                         continue
-                    print("Результат: ")
-                    a1 = zn3//100
-                    print(a1)
-                    a2 = zn3//10 % 10
-                    print(a2)
-                    a3 = zn3 % 10
-                    print(a3)
+
+                    if accept == True:
+                        zn3 *= pm
+                        print("Результат: ")
+                        if pm == -1:
+                            print("-")
+                        a1 = zn3//100
+                        print(a1)
+                        a2 = zn3//10 % 10
+                        print(a2)
+                        a3 = zn3 % 10
+                        print(a3)
 
                     dev1answer = input("Хотите сумму? (да/нет): ").strip().lower()
 
@@ -278,15 +306,15 @@ while True:
                         print("Ненайдена операция")
 
                 elif dev == 'kib':
-                    kib5 = int(input("Введите количесво 5: "))
+                    kib5 = int(input("Введите количество 5: "))
                     if kib5 < 0:
                         print("Отрицательное значение преобразовано в положительное")
                         kib5 = -kib5
-                    kib10 = int(input("Введите количесво 10: "))
+                    kib10 = int(input("Введите количество 10: "))
                     if kib10 < 0:
                         print("Отрицательное значение преобразовано в положительное")
                         kib10 = -kib10
-                    kib20 = int(input("Введите количесво 20: "))
+                    kib20 = int(input("Введите количество 20: "))
                     if kib20 < 0:
                         print("Отрицательное значение преобразовано в положительное")
                         kib20 = -kib20
@@ -330,10 +358,25 @@ while True:
                     print("Ненайдена операция")
 
             elif choice == 'rps':
-                print("Данная функция на техническом обслуживании")
-                #enemylist = ['Камень', 'Ножницы', 'Бумага']
-                #enemy = random.choice(enemylist)
-                #player = input("Введи свой жест: ")
+                enemylist = ['камень', 'ножницы', 'бумага']
+                enemy = random.choice(enemylist)
+                player = input("Введи свой жест: ").strip().lower()
+                if player == enemy:
+                    print("Ничья")
+                elif player == "бумага" and enemy == "камень":
+                    print("Ты выиграл,", "противник выбрал:", enemy)
+                elif player == "ножницы" and enemy == "камень":
+                    print("Ты проиграл,", "противник выбрал:", enemy)      
+                elif player == "ножницы" and enemy == "бумага":
+                    print("Ты выиграл,", "противник выбрал:", enemy)
+                elif player == "камень" and enemy == "бумага":
+                    print("Ты проиграл,", "противник выбрал:", enemy)  
+                elif player == "камень" and enemy == "ножницы":
+                    print("Ты выиграл,", "противник выбрал:", enemy)
+                elif player == "бумага" and enemy == "ножницы":
+                    print("Ты проиграл,", "противник выбрал:", enemy)  
+                else:
+                    print("Ты ввел неправильный жест")            
 
             else:
                 print("Ненайдена операция")
