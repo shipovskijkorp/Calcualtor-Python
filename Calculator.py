@@ -1,5 +1,4 @@
 import math
-from math import sqrt
 import secrets
 import random
 import string
@@ -15,7 +14,7 @@ while True:
         choice = input("Что вы хотите: \ncal для калькулятора \nspv для вычислений \nran для рандома \ndop для дополнительных функций \ninfo для информации \nexit для выхода\n").strip().lower()
 
         if choice == 'cal':
-            choice = input("Выбери: \ncal для калькулятора \nurv для уравнений\n").strip().lower()
+            choice = input("Выбери: \ncal для калькулятора \nurv для уравнений\ndsc для калькулятора систем счислений\n").strip().lower()
             if choice == 'cal':
                 x = float(input("Введи первое число: "))
                 y = float(input("Введи второе число: "))
@@ -52,8 +51,8 @@ while True:
                     print("Ненайдена операция")
 
             elif choice == 'urv':
-                a = int(input("Введите коффициэнт х квадрата: "))
-                b = int(input("Введите коффициэнт обычного х: "))
+                a = int(input("Введите коэффициент х квадрата: "))
+                b = int(input("Введите коэффициент обычного х: "))
                 c = int(input("Введите последнее число: "))
 
                 if a == 0:
@@ -77,11 +76,33 @@ while True:
                         x = round(x, 2)
                         print("x =", x)
                     else:
-                        x1 = ((-b) + sqrt(d)) / (2*a)
+                        x1 = ((-b) + math.sqrt(d)) / (2*a)
                         x1 = round(x1, 2)
-                        x2 = ((-b) - sqrt(d)) / (2*a)
+                        x2 = ((-b) - math.sqrt(d)) / (2*a)
                         x2 = round(x2, 2)
                         print("x1 =", x1, "x2 =", x2)
+
+            elif choice == 'dsc':
+                x = input("Введи значение: ").upper()
+                input_base = int(input("Введи исходную систему счисления (2-36): "))
+                output_base = int(input("Введи конечную систему счисления (2-36): "))
+
+                digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                result = ""
+
+                if input_base < 2 or input_base > 36 or output_base < 2 or output_base > 36:
+                    print("Такой системы счисления не существует")
+                else:
+                    a = int(x, input_base)
+
+                    if a == 0:
+                        result = "0"
+                    else:
+                        while a > 0:
+                            result = digits[a % output_base] + result
+                            a = a // output_base
+
+                    print("Ответ: ", result)
 
             else:
                 print("Ненайдена операция") 
@@ -123,7 +144,7 @@ while True:
                 print("Ненайдена операция")
 
         elif choice == 'info':
-            print("Версия калькулятора на языке Python\nВерсия: 2.8.6 \nАвтор: ShipovskijKorp\ndevblog: 17\nTg: https://t.me/+_9Ho35Hbbe8zOTEy")
+            print("Версия калькулятора на языке Python\nВерсия: 2.9 \nАвтор: ShipovskijKorp\ndevblog: 18\nTg: https://t.me/+_9Ho35Hbbe8zOTEy")
 
         elif choice == 'dop':
             choice = input("\nВыбери: \nconv для конвертаций \nimb для индекса массы тела \nstg для генерации историй \nrps для игры камень ножницы бумага \ndev для функций разработчика\n").strip().lower()
@@ -210,12 +231,12 @@ while True:
 
             elif choice == 'stg':
                 time0 = ['Однажды', 'Вчера', 'Утром', 'Год назад', 'В первом классе', 'После того как посрал']
-                names = [' Антон', ' Игорь', ' Максим', ' Иван', ' Кирил']
+                names = [' Антон', ' Игорь', ' Максим', ' Иван', ' Кирилл']
                 action2 = [' шел', ' бежал', ' бродил']
                 action = [' увидел', ' заметил']
                 action3 = [' взял', ' подобрал']
                 place = [' городу', ' лесу', ' полю']
-                item = [' сотку', ' пяти десятку', ' пятисотку', ' тысчу']
+                item = [' сотку', ' пяти десятку', ' пятисотку', ' косарь']
                 action4 = [' и ушел', ' и убежал']
                 print(random.choice(time0)+random.choice(names)+random.choice(action2), " по", random.choice(place), " и", random.choice(action)+random.choice(item), ", он", random.choice(action3), "ее", random.choice(action4))
                 item2 = [' кириeшки', ' хавчик', ' колу' ]
@@ -363,7 +384,7 @@ while True:
                 enemy = random.choice(enemylist)
                 player = input("Введи свой жест: ").strip().lower()
                 if player == enemy:
-                    print("Ничья")
+                    print("Ничья, противник тоже выбрал:", enemy)
                 elif player == "бумага" and enemy == "камень":
                     print("Ты выиграл,", "противник выбрал:", enemy)
                 elif player == "ножницы" and enemy == "камень":
@@ -520,7 +541,7 @@ while True:
                     print("Ненайдена операция")
 
             elif fig == 'qub':
-                spv = input("Выбери: \nP - периметр \nS - для площади \nV - для обьема \n").strip().lower()
+                spv = input("Выбери: \nP - периметр \nS - для площади \nV - для объема \n").strip().lower()
                 if spv == 'p':
                     x = float(input("Введи сторону: "))
                     if x < 0:
@@ -546,7 +567,7 @@ while True:
                     print("Ненайдена операция")
 
             elif fig == 'par':
-                spv = input("Выбери: \nP - периметр \nS - для площади \nV - для обьема \n").strip().lower()
+                spv = input("Выбери: \nP - периметр \nS - для площади \nV - для объема \n").strip().lower()
                 if spv == 'p':
                     x = float(input("Введи сторону: "))
                     y = float(input("Введи сторону: "))
@@ -596,7 +617,7 @@ while True:
                     print("Ненайдена операция")
 
             elif fig == 'spher':
-                spv = input("Выбери: \nS - для площади \nV - для обьема \n").strip().lower()
+                spv = input("Выбери: \nS - для площади \nV - для объема \n").strip().lower()
                 if spv == 's':
                     x = float(input("Введи радиус: "))
                     if x < 0:
@@ -618,7 +639,7 @@ while True:
                     print("Ненайдена операция")
 
             elif fig == 'con':
-                spv = input("Выбери: \nS - для площади \nV - для обьема \n").strip().lower()
+                spv = input("Выбери: \nS - для площади \nV - для объема \n").strip().lower()
                 if spv == 's':
                     x = float(input("Введи радиус: "))
                     y = float(input("Введи высоту: "))
@@ -628,7 +649,7 @@ while True:
                     if y < 0:
                         print("Сторона не может быть отрицательна, отрицательное значение преобразовано в положительное")
                         y = -y 
-                    l = sqrt(x*x + y*y)
+                    l = math.sqrt(x*x + y*y)
                     print("Результат: ", math.pi*x*l + math.pi*x*x, "см2")
 
                 elif spv == 'v':
@@ -649,7 +670,7 @@ while True:
                     print("Ненайдена операция")
 
             elif fig == 'cil':
-                spv = input("Выбери: \nS - для площади \nV - для обьема \n").strip().lower()
+                spv = input("Выбери: \nS - для площади \nV - для объема \n").strip().lower()
                 if spv == 's':
                     x = float(input("Введи радиус: "))
                     y = float(input("Введи высоту: "))
