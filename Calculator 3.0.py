@@ -104,6 +104,55 @@ def bmi(height, weight):
 
     return f"{message}Результат: {round(index, 1)}"
 
+def convert_temp(value, mode):
+    if mode == 'ctf':
+        return f"Результат: {value * 1.8 + 32} F"
+    elif mode == 'ftc':
+        return f"Результат: {(value - 32) * 5 / 9} C"
+    else:
+        return "Ненайдена операция"
+
+def convert_dist(value, mode):
+    if mode == 1:
+        return f"Результат: {value / 10} см"
+    elif mode == 2:
+        return f"Результат: {value / 1000} м"
+    elif mode == 3:
+        return f"Результат: {value / 1000000} км"
+    elif mode == 4:
+        return f"Результат: {value * 10} мм"
+    elif mode == 5:
+        return f"Результат: {value / 100} м"
+    elif mode == 6:
+        return f"Результат: {value / 100000} км"
+    elif mode == 7:
+        return f"Результат: {value * 1000} мм"
+    elif mode == 8:
+        return f"Результат: {value * 100} см"
+    elif mode == 9:
+        return f"Результат: {value / 1000} км"
+    elif mode == 10:
+        return f"Результат: {value * 1000000} мм"
+    elif mode == 11:
+        return f"Результат: {value * 100000} см"
+    elif mode == 12:
+        return f"Результат: {value * 1000} м"
+    else:
+        return "Ненайдена операция"    
+
+def make_positive (value):
+    if value < 0:
+        return -value
+    else:
+        return value
+    
+def only_positive(value):  
+    if value <= 0:
+        raise ValueError 
+    else:
+        return value
+
+
 
 while True:
     try:
@@ -138,7 +187,21 @@ while True:
                 print(dsc(x, input_base, output_base))
 
             elif cal_choice == 'conv':
-                print("В разработке")    
+                conv_mode = input("dist - конвертация дистанции \ntemp для конвертации температуры\n").strip().lower()
+
+                if conv_mode == 'temp':
+                    temp_mode = input("Выбери: ctf для C в F или ftc для F в C \n").strip().lower()
+                    t = float(input("Введите температуру: "))
+                    print(convert_temp(t, temp_mode))
+
+                elif conv_mode == 'dist':
+                    print("1) мм в см \n2) мм в м \n3) мм в км\n4) см в мм \n5) см в м \n6) см в км \n7) м в мм \n8) м в см \n9) м в км \n10) км в мм \n11) км в см \n12) км в м ")
+                    dist_mode = int(input("Выберете операцию: "))
+                    dist = float(input("Введите число: "))
+                    print(convert_dist(dist, dist_mode))
+                    
+                else:
+                    print("Ненайдена операция")
 
             elif cal_choice == 'bmi':
                 h = float(input("Введите рост (см): "))
@@ -154,6 +217,7 @@ while True:
             if ran_choice == 'num':
                 minN = int(input("Введите нижнюю границу: "))
                 maxN = int(input("Введите верхнюю границу: "))
+
                 if maxN < minN:
                     minN, maxN = maxN, minN
                     print(f"Возможно границы были перепутаны местами. Новые границы: от {minN} до {maxN}")
