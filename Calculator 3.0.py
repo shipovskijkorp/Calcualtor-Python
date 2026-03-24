@@ -192,7 +192,7 @@ def make_positive (value):
     
 def only_positive(value):  
     if value <= 0:
-        raise ValueError 
+        raise ValueError("Значение должно быть больше 0")
     else:
         return value
 
@@ -246,9 +246,27 @@ while True:
 
                 elif conv_mode == 'speed':
                     print("1) м/с в км/ч \n2) км/ч в м/с")
-                    speed_mode = int(input("Выбирите режим: "))
+                    speed_mode = int(input("Выберете операцию: "))
                     speed = float(input("Введите значение: "))
                     print(convert_speed(speed, speed_mode))
+
+                elif conv_mode == 'volume':
+                    print("1) мл в л\n2) л в мл\n3) см3 в м3\n4) м3 в см3")
+                    mode = int(input("Выберете операцию: "))
+                    value = float(input("Введите объем: "))
+                    print(convert_volume(value, mode))
+
+                elif conv_mode == 'mass':
+                    print("1) мг в г\n2) г в кг\n3) кг в г\n4) т в кг")
+                    mode = int(input("Выберете операцию: "))
+                    value = float(input("Введите массу: "))
+                    print(convert_mass(value, mode))
+
+                elif conv_mode == 'area':
+                    print("1) мм2 в см2\n2) см2 в м2\n3) м2 в см2\n4) км2 в м2")
+                    mode = int(input("Выберете операцию: "))
+                    value = float(input("Введите площадь: "))
+                    print(convert_area(value, mode))
 
                 else:
                     print("Ненайдена операция")
