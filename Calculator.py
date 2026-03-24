@@ -16,39 +16,11 @@ while True:
         if choice == 'cal':
             choice = input("Выбери: \ncal для калькулятора \nurv для уравнений\ndsc для калькулятора систем счислений\n").strip().lower()
             if choice == 'cal':
-                x = float(input("Введи первое число: "))
-                y = float(input("Введи второе число: "))
 
-                choice = input("Выбери операцию: +, -, *, /, sr (сравнение) : ").strip().lower()
-
-                if choice == '+':
-                    print("Результат: ", x + y)
-
-                elif choice == '-':
-                    print("Результат: ", x - y)
-
-                elif choice == '*':
-                    print("Результат: ", x * y)
-
-                elif choice == '/':
-                    if y == 0:
-                        print("На 0 делить  нельзя (РКН запретил)")
-
-                    else:
-                        print("Результат: ", x / y)
-
-                elif choice == 'sr':
-                    if x > y:
-                        print(x, ">", y)
-
-                    elif x == y:
-                        print(x, "=", y)
-
-                    else:
-                        print(x, "<", y)
-
-                else:
-                    print("Ненайдена операция")
+                expr = input("Введи выражение: ")
+                expr = expr.replace("^", "**")
+                result = eval(expr)
+                print("Результат:", result)
 
             elif choice == 'urv':
                 a = int(input("Введите коэффициент х квадрата: "))
