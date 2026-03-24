@@ -116,7 +116,7 @@ while True:
                 print("Ненайдена операция")
 
         elif choice == 'info':
-            print("Версия калькулятора на языке Python\nВерсия: 3.0 \nАвтор: ShipovskijKorp\ndevblog: 19\nTg: https://t.me/+_9Ho35Hbbe8zOTEy")
+            print("Версия калькулятора на языке Python\nВерсия: 2.9.1 legacy \nАвтор: ShipovskijKorp\ndevblog: 19\nTg: https://t.me/+_9Ho35Hbbe8zOTEy")
 
         elif choice == 'dop':
             choice = input("\nВыбери: \nconv для конвертаций \nimb для индекса массы тела \nstg для генерации историй \nrps для игры камень ножницы бумага \nkib для киберone\n").strip().lower()
