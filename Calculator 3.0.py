@@ -150,13 +150,33 @@ def convert_speed(value, mode):
 
 def convert_volume(value, mode):
     if mode == 1:
-        return f"Результат: {value / 1000} л"
+        return f"Результат: {value / 1000} л"         
     elif mode == 2:
-        return f"Результат: {value * 1000} мл"
+        return f"Результат: {value / 1000000} м3"     
     elif mode == 3:
-        return f"Результат: {value / 1000000} м3"
+        return f"Результат: {value} см3"           
+
     elif mode == 4:
-        return f"Результат: {value * 1000000} см3"
+        return f"Результат: {value * 1000} мл"      
+    elif mode == 5:
+        return f"Результат: {value / 1000} м3"      
+    elif mode == 6:
+        return f"Результат: {value * 1000} см3" 
+
+    elif mode == 7:
+        return f"Результат: {value * 1000000} мл"     
+    elif mode == 8:
+        return f"Результат: {value * 1000} л"    
+    elif mode == 9:
+        return f"Результат: {value * 1000000} см3"   
+
+    elif mode == 10:
+        return f"Результат: {value} мл"            
+    elif mode == 11:
+        return f"Результат: {value / 1000} л"       
+    elif mode == 12:
+        return f"Результат: {value / 1000000} м3"   
+
     else:
         return "Ненайдена операция"
 
@@ -194,15 +214,35 @@ def convert_mass(value, mode):
 
 def convert_area(value, mode):
     if mode == 1:
-        return f"Результат: {value / 100} см2"
+        return f"Результат: {value / 100} см2"        
     elif mode == 2:
-        return f"Результат: {value / 10000} м2"
+        return f"Результат: {value / 1000000} м2"         
     elif mode == 3:
-        return f"Результат: {value * 10000} см2"
+        return f"Результат: {value / 1000000000000} км2"   
+
     elif mode == 4:
-        return f"Результат: {value * 1000000} м2"
+        return f"Результат: {value * 100} мм2"      
+    elif mode == 5:
+        return f"Результат: {value / 10000} м2"          
+    elif mode == 6:
+        return f"Результат: {value / 10000000000} км2"    
+
+    elif mode == 7:
+        return f"Результат: {value * 1000000} мм2"     
+    elif mode == 8:
+        return f"Результат: {value * 10000} см2"     
+    elif mode == 9:
+        return f"Результат: {value / 1000000} км2"     
+
+    elif mode == 10:
+        return f"Результат: {value * 1000000000000} мм2" 
+    elif mode == 11:
+        return f"Результат: {value * 10000000000} см2"    
+    elif mode == 12:
+        return f"Результат: {value * 1000000} м2"       
+
     else:
-        return "Ненайдена операция"                    
+        return "Ненайдена операция"                  
 
 def make_positive (value):
     if value < 0:
@@ -271,19 +311,19 @@ while True:
                     print(convert_speed(speed, speed_mode))
 
                 elif conv_mode == 'volume':
-                    print("1) мл в л\n2) л в мл\n3) см3 в м3\n4) м3 в см3")
+                    print("1) мл в л\n2) мл в м3\n3) мл в см3\n4) л в мл\n5) л в м3\n6) л в см3\n7) м3 в мл\n8) м3 в л\n9) м3 в см3\n10) см3 в мл\n11) см3 в л\n12) см3 в м3")
                     mode = int(input("Выберете операцию: "))
                     value = float(input("Введите объем: "))
                     print(convert_volume(value, mode))
 
                 elif conv_mode == 'mass':
-                    print("1) мг в г\n2) г в кг\n3) кг в г\n4) т в кг")
-                    mode = int(input("Выберете операцию: "))
+                    print("1) мг в г\n""2) мг в кг\n""3) мг в т\n""4) г в мг\n""5) г в кг\n""6) г в т\n""7) кг в мг\n""8) кг в г\n""9) кг в т\n""10) т в мг\n""11) т в г\n""12) т в кг")
+                    mode = int(input("Выберите операцию: "))
                     value = float(input("Введите массу: "))
                     print(convert_mass(value, mode))
 
                 elif conv_mode == 'area':
-                    print("1) мм2 в см2\n2) см2 в м2\n3) м2 в см2\n4) км2 в м2")
+                    print("1) мм2 в см2\n2) мм2 в м2\n3) мм2 в км2\n4) см2 в мм2\n5) см2 в м2\n6) см2 в км2\n7) м2 в мм2\n8) м2 в см2\n9) м2 в км2\n10) км2 в мм2\n11) км2 в см2\n12) км2 в м2")
                     mode = int(input("Выберете операцию: "))
                     value = float(input("Введите площадь: "))
                     print(convert_area(value, mode))
