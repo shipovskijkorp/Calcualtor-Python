@@ -273,10 +273,15 @@ while True:
             cal_choice = input("Выбери: \ncal для калькулятора \nurv для уравнений\ndsc для калькулятора систем счислений\nconv для конвертаций \nbmi для индекса массы тела \n").strip().lower()   
 
             if cal_choice == 'cal':
-                expr = input("Введи выражение: ")
+                expr = input("Введи выражение: ").strip()
                 expr = expr.replace("^", "**")
-                result = eval(expr)
-                print("Результат:", result) 
+
+                allowed = "0123456789+-*/(). %"
+                if not all(ch in allowed for ch in expr):
+                    print("Недопустимые символы")
+                else:
+                    result = eval(expr, {"__builtins__": None}, {})
+                    print("Результат:", result)
 
             elif cal_choice == 'urv':
                 a = int(input("Введите коэффициент x^2: "))
@@ -285,7 +290,7 @@ while True:
                 print(urv(a, b, c))
 
             elif cal_choice == 'dsc':
-                x = input("Введи значение: ").upper().strip()
+                x = input("Введи значение: ").strip().upper()
                 input_base = int(input("Введи исходную систему счисления (2-36): "))
                 output_base = int(input("Введи конечную систему счисления (2-36): "))
                 print(dsc(x, input_base, output_base))
@@ -364,8 +369,8 @@ while True:
         else:
             print("Ненайдена операция")      
               
-    except ValueError:
-        print("Ошибка ввода")
+    except ValueError as err:
+        print(f"Ошибка ввода, {err}")
 
-    except ZeroDivisionError:
-        print("Ошибка, одно из чисел в делении равно 0")            
+    except ZeroDivisionError as err:
+        print(f"Ошибка, одно из чисел в делении равно 0, {err}")            
