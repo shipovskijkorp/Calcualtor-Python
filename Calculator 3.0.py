@@ -162,13 +162,33 @@ def convert_volume(value, mode):
 
 def convert_mass(value, mode):
     if mode == 1:
-        return f"Результат: {value / 1000} г"
+        return f"Результат: {value / 1000} г"        
     elif mode == 2:
-        return f"Результат: {value / 1000} кг"
+        return f"Результат: {value / 1000000} кг"    
     elif mode == 3:
-        return f"Результат: {value * 1000} г"
+        return f"Результат: {value / 1000000000} т"  
+
     elif mode == 4:
+        return f"Результат: {value * 1000} мг"      
+    elif mode == 5:
+        return f"Результат: {value / 1000} кг"       
+    elif mode == 6:
+        return f"Результат: {value / 1000000} т"   
+
+    elif mode == 7:
+        return f"Результат: {value * 1000000} мг"   
+    elif mode == 8:
+        return f"Результат: {value * 1000} г"      
+    elif mode == 9:
+        return f"Результат: {value / 1000} т"       
+
+    elif mode == 10:
+        return f"Результат: {value * 1000000000} мг" 
+    elif mode == 11:
+        return f"Результат: {value * 1000000} г"
+    elif mode == 12:
         return f"Результат: {value * 1000} кг"
+
     else:
         return "Ненайдена операция"
 
