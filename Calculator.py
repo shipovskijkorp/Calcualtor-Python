@@ -144,10 +144,10 @@ while True:
                 print("Ненайдена операция")
 
         elif choice == 'info':
-            print("Версия калькулятора на языке Python\nВерсия: 2.9 \nАвтор: ShipovskijKorp\ndevblog: 18\nTg: https://t.me/+_9Ho35Hbbe8zOTEy")
+            print("Версия калькулятора на языке Python\nВерсия: 3.0 \nАвтор: ShipovskijKorp\ndevblog: 19\nTg: https://t.me/+_9Ho35Hbbe8zOTEy")
 
         elif choice == 'dop':
-            choice = input("\nВыбери: \nconv для конвертаций \nimb для индекса массы тела \nstg для генерации историй \nrps для игры камень ножницы бумага \ndev для функций разработчика\n").strip().lower()
+            choice = input("\nВыбери: \nconv для конвертаций \nimb для индекса массы тела \nstg для генерации историй \nrps для игры камень ножницы бумага \nkib для киберone\n").strip().lower()
             if choice == 'imb':
                 H = float(input("Введите рост (см): "))
                 if H == 0:
@@ -248,136 +248,29 @@ while True:
                 action6 = [' украл', ' стырил']
                 print(random.choice(time3)+random.choice(names)+random.choice(action6), " у него это")
 
-            elif choice == 'dev':
-                dev = input("2st для вывода 2 значных в столбик \n3st для вывода 3 значных в столбик \nkib для киберone \nEoO для сравнения кто старше\n").strip().lower()
-
-                if dev == '2st':
-                    accept = False
-                    pm = 1
-                    zn2 = int(input("Введи 2 значное число: "))
-                    if zn2 < -9 and zn2 > -100:
-                        accept = True
-                        pm = -1
-                    elif zn2 > 9 and zn2 < 100:
-                        accept = True
-                        pm = 1
-                    else:    
-                        print("Это не 2 значное число")
-                        accept = False
-                        continue
-
-                    if accept == True:
-                        zn2 *= pm
-                        print("Результат: ")
-                        if pm == -1:
-                            print("-")
-                        a1 = zn2//10
-                        print(a1)
-                        a2 = zn2 % 10
-                        print(a2)
-
-                    dev1answer = input("Хотите сумму? (да/нет): ").strip().lower()
-
-                    if dev1answer == 'да':
-                        print("Результат: ")
-                        print(a1+a2)
-
-                    elif dev1answer == 'нет':
-                        print()
-
-                    else:
-                        print("Ненайдена операция")
-
-                elif dev == '3st':
-                    accept = False
-                    pm = 1
-                    zn3 = int(input("Введи 3 значное число: "))
-                    if zn3 < -99 and zn3 > -1000:
-                        accept = True
-                        pm = -1
-                    elif zn3 > 99 and zn3 < 1000:
-                        accept = True
-                        pm = 1
-                    else:    
-                        print("Это не 3 значное число")
-                        accept = False
-                        continue
-
-                    if accept == True:
-                        zn3 *= pm
-                        print("Результат: ")
-                        if pm == -1:
-                            print("-")
-                        a1 = zn3//100
-                        print(a1)
-                        a2 = zn3//10 % 10
-                        print(a2)
-                        a3 = zn3 % 10
-                        print(a3)
-
-                    dev1answer = input("Хотите сумму? (да/нет): ").strip().lower()
-
-                    if dev1answer == 'да':
-                        print("Результат: ")
-                        print(a1+a2+a3)
-
-                    elif dev1answer == 'нет':
-                        print()
-
-                    else:
-                        print("Ненайдена операция")
-
-                elif dev == 'kib':
-                    kib5 = int(input("Введите количество 5: "))
-                    if kib5 < 0:
-                        print("Отрицательное значение преобразовано в положительное")
-                        kib5 = -kib5
-                    kib10 = int(input("Введите количество 10: "))
-                    if kib10 < 0:
-                        print("Отрицательное значение преобразовано в положительное")
-                        kib10 = -kib10
-                    kib20 = int(input("Введите количество 20: "))
-                    if kib20 < 0:
-                        print("Отрицательное значение преобразовано в положительное")
-                        kib20 = -kib20
-                    kib50 = int(input("Введите количесво 50: "))
-                    if kib50 < 0:
-                        print("Отрицательное значение преобразовано в положительное")
-                        kib50 = -kib50
-                    kibe = kib5*5 + kib10*10 + kib20*20 + kib50*50
-                    print("Результат:", kibe)
-
-                elif dev == 'EoO':
-                    name1 = input("Введите первое имя: ")
-                    age1 = int(input("Введите первый возраст: "))
-                    name2 = input("Введите второе имя: ")
-                    age2 = int(input("Введите второй возраст: "))
-                    name3 = input("Введите третье имя: ")
-                    age3 = int(input("Введите третий возраст: "))
-
-                    if age1 > age2 and age1 > age3:
-                        print(name1, "старше всех")
-
-                    elif age2 > age1 and age2 > age3:
-                        print(name2, "старше всех")
-
-                    elif age3 > age2 and age3 > age1:
-                        print(name3, "старше всех")
-
-                    elif age1 == age2 and age1 > age3:
-                        print(name1, "и", name2, "старше чем", name3)
-
-                    elif age2 == age3 and age2 > age1:
-                        print(name2, "и", name3, "старше чем", name1)
-
-                    elif age1 == age3 and age1 > age2:
-                        print(name1, "и", name3, "старше чем", name2)
-
-                    elif age1 == age2 and age1 == age3:
-                        print(name1, name2, "и", name3, "одного возраста")
-
-                else:
-                    print("Ненайдена операция")
+            elif choice == 'kib':
+                kib5 = int(input("Введите количество 5: "))
+                if kib5 < 0:
+                    print("Отрицательное значение преобразовано в положительное")
+                    kib5 = -kib5
+                kib10 = int(input("Введите количество 10: "))
+                if kib10 < 0:
+                    print("Отрицательное значение преобразовано в положительное")
+                    kib10 = -kib10
+                kib20 = int(input("Введите количество 20: "))
+                if kib20 < 0:
+                    print("Отрицательное значение преобразовано в положительное")
+                    kib20 = -kib20
+                kib50 = int(input("Введите количесво 50: "))
+                if kib50 < 0:
+                    print("Отрицательное значение преобразовано в положительное")
+                    kib50 = -kib50
+                kib100 = int(input("Введите количесво 100: "))  
+                if kib100 < 0:
+                    print("Отрицательное значение преобразовано в положительное")
+                    kib100 = -kib100  
+                kibe = kib5*5 + kib10*10 + kib20*20 + kib50*50 + kib100*100
+                print("Результат:", kibe)
 
             elif choice == 'rps':
                 enemylist = ['камень', 'ножницы', 'бумага']
