@@ -138,7 +138,51 @@ def convert_dist(value, mode):
     elif mode == 12:
         return f"Результат: {value * 1000} м"
     else:
-        return "Ненайдена операция"    
+        return "Ненайдена операция"
+
+def convert_speed(value, mode):
+    if mode == 1:
+        return f"Результат: {value * 3.6} км/ч"
+    elif mode == 2:
+        return f"Результат: {value / 3.6} м/с"
+    else:
+        return "Ненайдена операция"
+
+def convert_volume(value, mode):
+    if mode == 1:
+        return f"Результат: {value / 1000} л"
+    elif mode == 2:
+        return f"Результат: {value * 1000} мл"
+    elif mode == 3:
+        return f"Результат: {value / 1000000} м3"
+    elif mode == 4:
+        return f"Результат: {value * 1000000} см3"
+    else:
+        return "Ненайдена операция"
+
+def convert_mass(value, mode):
+    if mode == 1:
+        return f"Результат: {value / 1000} г"
+    elif mode == 2:
+        return f"Результат: {value / 1000} кг"
+    elif mode == 3:
+        return f"Результат: {value * 1000} г"
+    elif mode == 4:
+        return f"Результат: {value * 1000} кг"
+    else:
+        return "Ненайдена операция"
+
+def convert_area(value, mode):
+    if mode == 1:
+        return f"Результат: {value / 100} см2"
+    elif mode == 2:
+        return f"Результат: {value / 10000} м2"
+    elif mode == 3:
+        return f"Результат: {value * 10000} см2"
+    elif mode == 4:
+        return f"Результат: {value * 1000000} м2"
+    else:
+        return "Ненайдена операция"                    
 
 def make_positive (value):
     if value < 0:
@@ -187,7 +231,7 @@ while True:
                 print(dsc(x, input_base, output_base))
 
             elif cal_choice == 'conv':
-                conv_mode = input("dist - конвертация дистанции \ntemp для конвертации температуры\n").strip().lower()
+                conv_mode = input("Конвертация:\ndist - дистанция \nspeed - скорость \narea - площадь\nvolume - обьем\nmass - масса\ntemp - температура\n").strip().lower()
 
                 if conv_mode == 'temp':
                     temp_mode = input("Выбери: ctf для C в F или ftc для F в C \n").strip().lower()
@@ -197,9 +241,15 @@ while True:
                 elif conv_mode == 'dist':
                     print("1) мм в см \n2) мм в м \n3) мм в км\n4) см в мм \n5) см в м \n6) см в км \n7) м в мм \n8) м в см \n9) м в км \n10) км в мм \n11) км в см \n12) км в м ")
                     dist_mode = int(input("Выберете операцию: "))
-                    dist = float(input("Введите число: "))
+                    dist = float(input("Введите значение: "))
                     print(convert_dist(dist, dist_mode))
-                    
+
+                elif conv_mode == 'speed':
+                    print("1) м/с в км/ч \n2) км/ч в м/с")
+                    speed_mode = int(input("Выбирите режим: "))
+                    speed = float(input("Введите значение: "))
+                    print(convert_speed(speed, speed_mode))
+
                 else:
                     print("Ненайдена операция")
 
