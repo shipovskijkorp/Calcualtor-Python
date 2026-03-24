@@ -79,9 +79,35 @@ def dsc(x, input_base, output_base):
     result = f"Ответ: {dscresult}"
     return result
 
+def bmi(height, weight):
+    message = ""
+
+    if height == 0:
+        return "Рост не может быть равен 0!"
+
+    if height < 0:
+        height = -height
+        message += "Рост не может быть отрицательным, отрицательное значение конвертировано в положительное\n"
+
+    if height < 140:
+        message += "Хоббиты общий сбор!!!\n"
+
+    if weight == 0:
+        return "Вес не может быть равен 0!"
+
+    if weight < 0:
+        weight = -weight
+        message += "Вес не может быть отрицательным, отрицательное значение конвертировано в положительное\n"
+
+    height_m = height / 100
+    index = weight / (height_m * height_m)
+
+    return f"{message}Результат: {round(index, 1)}"
+
+
 while True:
     try:
-        main_choice = input("Что вы хотите: \ncal для калькулятора \nspv для вычислений \nran для рандома \ndop для дополнительных функций \ninfo для информации \nexit для выхода\n").strip().lower()
+        main_choice = input("Что вы хотите: \ncal для калькулятора \nspv для вычислений \nran для рандома \ninfo для информации \nexit для выхода\n").strip().lower()
 
         if main_choice == 'exit':
             print("Остановка")
@@ -91,7 +117,7 @@ while True:
             print("Версия калькулятора на языке Python\nВерсия: 3.0 \nАвтор: ShipovskijKorp\ndevblog: 20\nTg: https://t.me/+_9Ho35Hbbe8zOTEy")
 
         elif main_choice == 'cal':
-            cal_choice = input("Выбери: \ncal для калькулятора \nurv для уравнений\ndsc для калькулятора систем счислений\n").strip().lower()   
+            cal_choice = input("Выбери: \ncal для калькулятора \nurv для уравнений\ndsc для калькулятора систем счислений\nconv для конвертаций \nbmi для индекса массы тела \n").strip().lower()   
 
             if cal_choice == 'cal':
                 expr = input("Введи выражение: ")
@@ -106,10 +132,18 @@ while True:
                 print(urv(a, b, c))
 
             elif cal_choice == 'dsc':
-                x = input("Введи значение: ").upper()
+                x = input("Введи значение: ").upper().strip()
                 input_base = int(input("Введи исходную систему счисления (2-36): "))
                 output_base = int(input("Введи конечную систему счисления (2-36): "))
                 print(dsc(x, input_base, output_base))
+
+            elif cal_choice == 'conv':
+                print("В разработке")    
+
+            elif cal_choice == 'bmi':
+                h = float(input("Введите рост (см): "))
+                m = float(input("Введите вес (кг): "))
+                print(bmi(h, m))    
 
             else:
                 print("Ненайдена операция")
@@ -122,7 +156,7 @@ while True:
                 maxN = int(input("Введите верхнюю границу: "))
                 if maxN < minN:
                     minN, maxN = maxN, minN
-                    print(f"Значения недопустимы, верхняя граница не может быть меньше нижней. Новые границы: от {minN} до {maxN}")
+                    print(f"Возможно границы были перепутаны местами. Новые границы: от {minN} до {maxN}")
                 print("Результат:", random.randint(minN, maxN))
 
             elif ran_choice == 'pas':
@@ -131,6 +165,9 @@ while True:
 
             else:
                 print("Ненайдена операция")  
+
+        elif main_choice == 'spv':
+            print("В разработке")
 
         else:
             print("Ненайдена операция")      
