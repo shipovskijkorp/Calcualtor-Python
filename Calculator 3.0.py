@@ -5,6 +5,8 @@ import string
 import json
 import os
 
+current_version = 3.0
+
 DEFAULT_CONFIG = {
     "password": {
         "max_length": 1024
@@ -25,6 +27,11 @@ def load_config(filename="config.json"):
         return json.load(file)
 
 config = load_config()
+
+config_version = config["config"]["config_version"]
+
+if current_version != config_version:
+    print(f"Несоответствие версий калькулятора и конфига:\nВерсия программы: {current_version}\nВерсия конфига: {config_version}\nВо избежание возможных проблем, пожалуйста удалите старый конфиг\n Он будет создан автоматически")
 
 def generate_password(length):
     max_length = config["password"]["max_length"]
