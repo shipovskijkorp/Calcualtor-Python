@@ -106,11 +106,11 @@ def bmi(height, weight):
 
 def convert_temp(value, mode):
     if mode == 'ctf':
-        return f"Результат: {value * 1.8 + 32} F"
+        return f"Результат: {round(value * 1.8 + 32, 6)} F"
     elif mode == 'ftc':
-        return f"Результат: {(value - 32) * 5 / 9} C"
+        return f"Результат: {round((value - 32) * 5 / 9, 6)} C"
     else:
-        return "Ненайдена операция"
+        return "Операция не найдена"
 
 def convert_dist(value, input_unit, output_unit):
     units = {
@@ -279,7 +279,7 @@ while True:
                     print(convert_area(area, input_area_unit, output_area_unit))
 
                 else:
-                    print("Ненайдена операция")
+                    print("Операция не найдена")
 
             elif cal_choice == 'bmi':
                 h = float(input("Введите рост (см): "))
@@ -287,7 +287,7 @@ while True:
                 print(bmi(h, m))    
 
             else:
-                print("Ненайдена операция")
+                print("Операция не найдена")
 
         elif main_choice == 'ran':
             ran_choice = input("Выбери тип рандома: \nnum для числа \npas для пароля: ").strip().lower()
@@ -306,13 +306,13 @@ while True:
                 print(generate_password(length))
 
             else:
-                print("Ненайдена операция")  
+                print("Операция не найдена")  
 
         elif main_choice == 'spv':
             print("В разработке")
 
         else:
-            print("Ненайдена операция")      
+            print("Операция не найдена")      
               
     except ValueError as err:
         print(f"Ошибка ввода, {err}")
