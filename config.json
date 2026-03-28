@@ -1,0 +1,5 @@
+{
+    "password": {
+        "max_length": 1024
+    }
+}

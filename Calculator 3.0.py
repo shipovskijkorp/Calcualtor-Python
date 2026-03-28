@@ -2,8 +2,35 @@ import math
 import secrets
 import random
 import string
+import json
+import os
+
+import json
+import os
+
+DEFAULT_CONFIG = {
+    "password": {
+        "max_length": 1024
+    }
+}
+
+def load_config(filename="config.json"):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(script_dir, filename)
+
+    if not os.path.exists(path):
+        with open(path, "w", encoding="utf-8") as file:
+            json.dump(DEFAULT_CONFIG, file, ensure_ascii=False, indent=4)
+        print(f"Конфиг создан: {path}")
+        return DEFAULT_CONFIG
+
+    with open(path, "r", encoding="utf-8") as file:
+        return json.load(file)
+
+config = load_config()
 
 def generate_password(length):
+    max_length = config["password"]["max_length"]
     if length < 0:
         length = -length
         message = "Отрицательная длина не поддерживается, введенное значение преобразовано в положительное\n"
@@ -13,9 +40,9 @@ def generate_password(length):
     if length == 0:
         return "Пароль с длиной 0 недоступен"
 
-    if length > 1024:
-        length = 1024
-        message += "Длина пароля ограничена 1024 символами, длина пароля обрезана до 1024\n"
+    if length > max_length:
+        length = max_length
+        message += f"Длина пароля ограничена {max_length} символами, длина пароля обрезана до {max_length}\n"
 
     characters = string.ascii_letters + string.digits
     password = ''.join(secrets.choice(characters) for _ in range(length))
@@ -290,7 +317,7 @@ while True:
                 print("Операция не найдена")
 
         elif main_choice == 'ran':
-            ran_choice = input("Выбери тип рандома: \nnum для числа \npas для пароля: ").strip().lower()
+            ran_choice = input("Выбери тип рандома: \nnum для числа \npas для пароля\n").strip().lower()
 
             if ran_choice == 'num':
                 minN = int(input("Введите нижнюю границу: "))
