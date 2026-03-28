@@ -112,137 +112,77 @@ def convert_temp(value, mode):
     else:
         return "Ненайдена операция"
 
-def convert_dist(value, mode):
-    if mode == 1:
-        return f"Результат: {value / 10} см"
-    elif mode == 2:
-        return f"Результат: {value / 1000} м"
-    elif mode == 3:
-        return f"Результат: {value / 1000000} км"
-    elif mode == 4:
-        return f"Результат: {value * 10} мм"
-    elif mode == 5:
-        return f"Результат: {value / 100} м"
-    elif mode == 6:
-        return f"Результат: {value / 100000} км"
-    elif mode == 7:
-        return f"Результат: {value * 1000} мм"
-    elif mode == 8:
-        return f"Результат: {value * 100} см"
-    elif mode == 9:
-        return f"Результат: {value / 1000} км"
-    elif mode == 10:
-        return f"Результат: {value * 1000000} мм"
-    elif mode == 11:
-        return f"Результат: {value * 100000} см"
-    elif mode == 12:
-        return f"Результат: {value * 1000} м"
-    else:
-        return "Ненайдена операция"
+def convert_dist(value, input_unit, output_unit):
+    units = {
+        "мм": 1,
+        "см": 10,
+        "дм": 100,
+        "м": 1000,
+        "км": 1000000
+    }
 
-def convert_speed(value, mode):
-    if mode == 1:
-        return f"Результат: {value * 3.6} км/ч"
-    elif mode == 2:
-        return f"Результат: {value / 3.6} м/с"
-    else:
-        return "Ненайдена операция"
+    if input_unit not in units or output_unit not in units:
+        return "Неизвестная единица"
 
-def convert_volume(value, mode):
-    if mode == 1:
-        return f"Результат: {value / 1000} л"         
-    elif mode == 2:
-        return f"Результат: {value / 1000000} м3"     
-    elif mode == 3:
-        return f"Результат: {value} см3"           
+    result = value * units[input_unit] / units[output_unit]
+    return f"Результат: {round(result, 6)} {output_unit}"
 
-    elif mode == 4:
-        return f"Результат: {value * 1000} мл"      
-    elif mode == 5:
-        return f"Результат: {value / 1000} м3"      
-    elif mode == 6:
-        return f"Результат: {value * 1000} см3" 
+def convert_speed(value, input_unit, output_unit):
+    units = {
+        "м/с": 1,
+        "км/ч": 1 / 3.6
+    }
 
-    elif mode == 7:
-        return f"Результат: {value * 1000000} мл"     
-    elif mode == 8:
-        return f"Результат: {value * 1000} л"    
-    elif mode == 9:
-        return f"Результат: {value * 1000000} см3"   
+    if input_unit not in units or output_unit not in units:
+        return "Неизвестная единица"
 
-    elif mode == 10:
-        return f"Результат: {value} мл"            
-    elif mode == 11:
-        return f"Результат: {value / 1000} л"       
-    elif mode == 12:
-        return f"Результат: {value / 1000000} м3"   
+    result = value * units[input_unit] / units[output_unit]
+    return f"Результат: {round(result, 6)} {output_unit}"
 
-    else:
-        return "Ненайдена операция"
+def convert_volume(value, input_unit, output_unit):
+    units = {
+        "мл": 1,
+        "см3": 1,
+        "л": 1000,
+        "м3": 1000000
+    }
 
-def convert_mass(value, mode):
-    if mode == 1:
-        return f"Результат: {value / 1000} г"        
-    elif mode == 2:
-        return f"Результат: {value / 1000000} кг"    
-    elif mode == 3:
-        return f"Результат: {value / 1000000000} т"  
+    if input_unit not in units or output_unit not in units:
+        return "Неизвестная единица"
 
-    elif mode == 4:
-        return f"Результат: {value * 1000} мг"      
-    elif mode == 5:
-        return f"Результат: {value / 1000} кг"       
-    elif mode == 6:
-        return f"Результат: {value / 1000000} т"   
+    result = value * units[input_unit] / units[output_unit]
+    return f"Результат: {round(result, 6)} {output_unit}"
 
-    elif mode == 7:
-        return f"Результат: {value * 1000000} мг"   
-    elif mode == 8:
-        return f"Результат: {value * 1000} г"      
-    elif mode == 9:
-        return f"Результат: {value / 1000} т"       
+def convert_mass(value, input_unit, output_unit):
+    units = {
+        "мг": 1,
+        "г": 1000,
+        "кг": 1000000,
+        "ц": 100000000,
+        "т": 1000000000,
+        "кт": 1000000000000,
+        "мт": 1000000000000000
+    }
 
-    elif mode == 10:
-        return f"Результат: {value * 1000000000} мг" 
-    elif mode == 11:
-        return f"Результат: {value * 1000000} г"
-    elif mode == 12:
-        return f"Результат: {value * 1000} кг"
+    if input_unit not in units or output_unit not in units:
+        return "Неизвестная единица"
 
-    else:
-        return "Ненайдена операция"
+    result = value * units[input_unit] / units[output_unit]
+    return f"Результат: {round(result, 6)} {output_unit}"
 
-def convert_area(value, mode):
-    if mode == 1:
-        return f"Результат: {value / 100} см2"        
-    elif mode == 2:
-        return f"Результат: {value / 1000000} м2"         
-    elif mode == 3:
-        return f"Результат: {value / 1000000000000} км2"   
+def convert_area(value, input_unit, output_unit):
+    units = {
+        "мм2": 1,
+        "см2": 100,
+        "м2": 1000000,
+        "км2": 1000000000000
+    }
 
-    elif mode == 4:
-        return f"Результат: {value * 100} мм2"      
-    elif mode == 5:
-        return f"Результат: {value / 10000} м2"          
-    elif mode == 6:
-        return f"Результат: {value / 10000000000} км2"    
+    if input_unit not in units or output_unit not in units:
+        return "Неизвестная единица"
 
-    elif mode == 7:
-        return f"Результат: {value * 1000000} мм2"     
-    elif mode == 8:
-        return f"Результат: {value * 10000} см2"     
-    elif mode == 9:
-        return f"Результат: {value / 1000000} км2"     
-
-    elif mode == 10:
-        return f"Результат: {value * 1000000000000} мм2" 
-    elif mode == 11:
-        return f"Результат: {value * 10000000000} см2"    
-    elif mode == 12:
-        return f"Результат: {value * 1000000} м2"       
-
-    else:
-        return "Ненайдена операция"                  
+    result = value * units[input_unit] / units[output_unit]
+    return f"Результат: {round(result, 6)} {output_unit}"
 
 def make_positive (value):
     if value < 0:
@@ -296,7 +236,7 @@ while True:
                 print(dsc(x, input_base, output_base))
 
             elif cal_choice == 'conv':
-                conv_mode = input("Конвертация:\ndist - дистанция \nspeed - скорость \narea - площадь\nvolume - обьем\nmass - масса\ntemp - температура\n").strip().lower()
+                conv_mode = input("Конвертация:\ndist - дистанция \nspeed - скорость \narea - площадь\nvolume - объем\nmass - масса\ntemp - температура\n").strip().lower()
 
                 if conv_mode == 'temp':
                     temp_mode = input("Выбери: ctf для C в F или ftc для F в C \n").strip().lower()
@@ -304,34 +244,39 @@ while True:
                     print(convert_temp(t, temp_mode))
 
                 elif conv_mode == 'dist':
-                    print("1) мм в см \n2) мм в м \n3) мм в км\n4) см в мм \n5) см в м \n6) см в км \n7) м в мм \n8) м в см \n9) м в км \n10) км в мм \n11) км в см \n12) км в м ")
-                    dist_mode = int(input("Выберете операцию: "))
-                    dist = float(input("Введите значение: "))
-                    print(convert_dist(dist, dist_mode))
+                    print("Доступные единицы: мм, см, дм, м, км")
+                    distance = float(input("Введите значение: "))
+                    input_dist_unit = input("Введите исходную величину: ").strip().lower()
+                    output_dist_unit = input("Введите желаемую величину: ").strip().lower()
+                    print(convert_dist(distance, input_dist_unit, output_dist_unit))
 
                 elif conv_mode == 'speed':
-                    print("1) м/с в км/ч \n2) км/ч в м/с")
-                    speed_mode = int(input("Выберете операцию: "))
+                    print("Доступные единицы: м/с, км/ч")
                     speed = float(input("Введите значение: "))
-                    print(convert_speed(speed, speed_mode))
+                    input_speed_unit = input("Введите исходную величину: ").strip().lower()
+                    output_speed_unit = input("Введите желаемую величину: ").strip().lower()
+                    print(convert_speed(speed, input_speed_unit, output_speed_unit))
 
                 elif conv_mode == 'volume':
-                    print("1) мл в л\n2) мл в м3\n3) мл в см3\n4) л в мл\n5) л в м3\n6) л в см3\n7) м3 в мл\n8) м3 в л\n9) м3 в см3\n10) см3 в мл\n11) см3 в л\n12) см3 в м3")
-                    mode = int(input("Выберете операцию: "))
-                    value = float(input("Введите объем: "))
-                    print(convert_volume(value, mode))
+                    print("Доступные единицы: мл, л, см3, м3")
+                    volume = float(input("Введите значение: "))
+                    input_volume_unit = input("Введите исходную величину: ").strip().lower()
+                    output_volume_unit = input("Введите желаемую величину: ").strip().lower()
+                    print(convert_volume(volume, input_volume_unit, output_volume_unit))
 
                 elif conv_mode == 'mass':
-                    print("1) мг в г\n""2) мг в кг\n""3) мг в т\n""4) г в мг\n""5) г в кг\n""6) г в т\n""7) кг в мг\n""8) кг в г\n""9) кг в т\n""10) т в мг\n""11) т в г\n""12) т в кг")
-                    mode = int(input("Выберите операцию: "))
-                    value = float(input("Введите массу: "))
-                    print(convert_mass(value, mode))
+                    print("Доступные единицы: мг, г, кг, ц, т, Кт, Мт")
+                    mass = float(input("Введите значение: "))
+                    input_mass_unit = input("Введите исходную величину: ").strip().lower()
+                    output_mass_unit = input("Введите желаемую величину: ").strip().lower()
+                    print(convert_mass(mass, input_mass_unit, output_mass_unit))
 
                 elif conv_mode == 'area':
-                    print("1) мм2 в см2\n2) мм2 в м2\n3) мм2 в км2\n4) см2 в мм2\n5) см2 в м2\n6) см2 в км2\n7) м2 в мм2\n8) м2 в см2\n9) м2 в км2\n10) км2 в мм2\n11) км2 в см2\n12) км2 в м2")
-                    mode = int(input("Выберете операцию: "))
-                    value = float(input("Введите площадь: "))
-                    print(convert_area(value, mode))
+                    print("Доступные единицы: мм2, см2, м2, км2")
+                    area = float(input("Введите значение: "))
+                    input_area_unit = input("Введите исходную величину: ").strip().lower()
+                    output_area_unit = input("Введите желаемую величину: ").strip().lower()
+                    print(convert_area(area, input_area_unit, output_area_unit))
 
                 else:
                     print("Ненайдена операция")
