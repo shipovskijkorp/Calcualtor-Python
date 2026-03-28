@@ -5,9 +5,6 @@ import string
 import json
 import os
 
-import json
-import os
-
 DEFAULT_CONFIG = {
     "password": {
         "max_length": 1024
