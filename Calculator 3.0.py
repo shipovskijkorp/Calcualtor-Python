@@ -10,6 +10,10 @@ current_version = 3.0
 DEFAULT_CONFIG = {
     "password": {
         "max_length": 1024
+    },
+    
+    "config": {
+        "config_version": 3.0
     }
 }
 
@@ -29,9 +33,6 @@ def load_config(filename="config.json"):
 config = load_config()
 
 config_version = config["config"]["config_version"]
-
-if current_version != config_version:
-    print(f"Несоответствие версий калькулятора и конфига:\nВерсия программы: {current_version}\nВерсия конфига: {config_version}\nВо избежание возможных проблем, пожалуйста удалите старый конфиг\n Он будет создан автоматически")
 
 def generate_password(length):
     max_length = config["password"]["max_length"]
@@ -231,6 +232,10 @@ def only_positive(value):
 
 while True:
     try:
+        if current_version != config_version:
+            print(f"Несоответствие версий калькулятора и конфига:\nВерсия программы: {current_version}\nВерсия конфига: {config_version}\nВо избежание возможных проблем, пожалуйста удалите текущий конфиг\nОн будет создан автоматически")
+            break
+
         main_choice = input("Что вы хотите: \ncal для калькулятора \nspv для вычислений \nran для рандома \ninfo для информации \nexit для выхода\n").strip().lower()
 
         if main_choice == 'exit':
