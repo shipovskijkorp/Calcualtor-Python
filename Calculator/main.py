@@ -1,13 +1,6 @@
-from config import load_config, CURRENT_VERSION
+from config import load_config, CURRENT_VERSION, DEFAULT_CONFIG
 from core import generate_password, random_number, urv, dsc, bmi, calculate_expression
-from converters import (
-    convert_temp,
-    convert_dist,
-    convert_speed,
-    convert_volume,
-    convert_mass,
-    convert_area,
-)
+from converters import (convert_temp, convert_dist, convert_speed, convert_volume, convert_mass, convert_area)
 
 
 def main():
@@ -32,6 +25,7 @@ def main():
                 "spv для вычислений \n"
                 "ran для рандома \n"
                 "info для информации \n"
+                "config для просмотра конфигурации\n"
                 "exit для выхода\n"
             ).strip().lower()
 
@@ -47,6 +41,9 @@ def main():
                     "devblog: 20\n"
                     "Tg: https://t.me/+_9Ho35Hbbe8zOTEy"
                 )
+
+            elif main_choice == "config":  
+                print("\nТекущие настройки: ",DEFAULT_CONFIG,"\n")    
 
             elif main_choice == "cal":
                 cal_choice = input(
@@ -156,7 +153,7 @@ def main():
                     print("Операция не найдена")
 
             elif main_choice == "spv":
-                print("В разработке")
+                print("В разработке")  
 
             else:
                 print("Операция не найдена")

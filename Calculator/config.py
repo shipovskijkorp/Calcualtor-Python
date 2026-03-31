@@ -7,6 +7,11 @@ DEFAULT_CONFIG = {
     "password": {
         "max_length": 1024
     },
+
+    "meme-mode": {
+        "tumbler": "true"
+    },
+    
     "config": {
         "config_version": 3.0
     }
