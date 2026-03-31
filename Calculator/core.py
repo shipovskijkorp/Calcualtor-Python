@@ -3,7 +3,6 @@ import random
 import secrets
 import string
 
-
 def generate_password(length, config):
     max_length = config["password"]["max_length"]
 
@@ -25,14 +24,12 @@ def generate_password(length, config):
 
     return f"{message}Твой пароль: {password}"
 
-
 def random_number(min_value, max_value):
     if max_value < min_value:
         min_value, max_value = max_value, min_value
         print(f"Возможно границы были перепутаны местами. Новые границы: от {min_value} до {max_value}")
 
     return random.randint(min_value, max_value)
-
 
 def urv(a, b, c):
     if a == 0:
@@ -63,7 +60,6 @@ def urv(a, b, c):
 
     return result
 
-
 def dsc(x, input_base, output_base):
     digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     dscresult = ""
@@ -92,7 +88,6 @@ def dsc(x, input_base, output_base):
 
     return f"Ответ: {dscresult}"
 
-
 def bmi(height, weight):
     message = ""
 
@@ -117,7 +112,6 @@ def bmi(height, weight):
     index = weight / (height_m * height_m)
 
     return f"{message}Результат: {round(index, 1)}"
-
 
 def calculate_expression(expr):
     expr = expr.replace("^", "**")

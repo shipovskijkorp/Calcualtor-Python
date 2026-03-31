@@ -1,6 +1,7 @@
 from config import load_config, CURRENT_VERSION, DEFAULT_CONFIG
 from core import generate_password, random_number, urv, dsc, bmi, calculate_expression
 from converters import (convert_temp, convert_dist, convert_speed, convert_volume, convert_mass, convert_area)
+from geometry import *
 
 
 def main():
@@ -19,7 +20,7 @@ def main():
                     "Он будет создан автоматически"
                 )
                 break   
-            
+
             main_choice = input(
                 "Что вы хотите: \n"
                 "cal для калькулятора \n"
@@ -154,8 +155,44 @@ def main():
                     print("Операция не найдена")
 
             elif main_choice == "spv":
-                print("В разработке")  
+                print("Доступные фигуры:\nquad, rect, paral, trian, trap, okr, oval\nqub, par, spher, con, cil") 
+                figure = input() 
 
+                if figure == "quad":
+                    print(sp())
+                    action = input("Введите действие: ")
+                    x = float(input("Введите сторону a: "))
+                    print("Результат: ",square(x, action))
+
+                elif figure == "rect":
+                    print(sp())
+                    action = input("Введите действие: ")
+                    x = float(input("Введите сторону a: "))
+                    y = float(input("Введите сторону b: "))
+                    print("Результат: ",rectangle(x, y, action))
+
+                elif figure == "paral":
+                    print(sp())
+                    action = input("Введите действие: ")
+                    x = float(input("Введите основание a: "))
+                    if action == "p":
+                        y = float(input("Введите сторону b: "))
+                    elif action == "s":
+                        y = float(input("Введите высоту h: "))   
+                    print("Результат: ",paral(x, y, action))
+
+                elif figure == "trian":
+                    if action == "s":
+                        print(trian_form_menu())
+                        choice = input("Введите номер формулы: ").strip()
+                        result = triangle_area(choice)
+                        print("Результат:", result)
+                    elif action == "p":
+                        x = float(input("Введите сторону a: "))
+                        y = float(input("Введите сторону b: ")) 
+                        c = float(input("Введите сторону c: "))
+                        print("Результат: ",triangle_perimetr(a,b,c))     
+                    
             else:
                 print("Операция не найдена")
 
