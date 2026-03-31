@@ -228,7 +228,17 @@ def only_positive(value):
     else:
         return value
 
+def square_perimeter(a):
+    return 4 * make_positive(a)
 
+def square_area(a):
+    return make_positive(a) * make_positive(a)
+
+def rectangle_perimeter(a, b):
+    return 2 * (make_positive(a) + make_positive(b))
+
+def rectangle_area(a, b):
+    return make_positive(a) * make_positive(b)
 
 while True:
     try:
@@ -345,7 +355,7 @@ while True:
                 print("Операция не найдена")  
 
         elif main_choice == 'spv':
-            print("В разработке")
+            print("В разработке")    
 
         else:
             print("Операция не найдена")      
