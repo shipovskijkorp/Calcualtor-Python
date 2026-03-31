@@ -9,6 +9,7 @@ def main():
 
     while True:
         try:
+            print()
             if CURRENT_VERSION != config_version:
                 print(
                     "Несоответствие версий калькулятора и конфига:\n"
@@ -17,8 +18,8 @@ def main():
                     "Во избежание возможных проблем, пожалуйста удалите текущий конфиг\n"
                     "Он будет создан автоматически"
                 )
-                break
-
+                break   
+            
             main_choice = input(
                 "Что вы хотите: \n"
                 "cal для калькулятора \n"

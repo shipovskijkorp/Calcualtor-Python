@@ -6,6 +6,12 @@ def convert_temp(value, mode):
     else:
         return "Операция не найдена"
 
+def converter(value, input_unit, output_unit, units):
+    if input_unit not in units or output_unit not in units:
+        return "Неизвестная единица"
+
+    result = value * units[input_unit] / units[output_unit]
+    return f"Результат: {round(result, 6)} {output_unit}"
 
 def convert_dist(value, input_unit, output_unit):
     units = {
@@ -16,11 +22,7 @@ def convert_dist(value, input_unit, output_unit):
         "км": 1000000
     }
 
-    if input_unit not in units or output_unit not in units:
-        return "Неизвестная единица"
-
-    result = value * units[input_unit] / units[output_unit]
-    return f"Результат: {round(result, 6)} {output_unit}"
+    return converter(value, input_unit, output_unit, units)
 
 
 def convert_speed(value, input_unit, output_unit):
@@ -29,11 +31,7 @@ def convert_speed(value, input_unit, output_unit):
         "км/ч": 1 / 3.6
     }
 
-    if input_unit not in units or output_unit not in units:
-        return "Неизвестная единица"
-
-    result = value * units[input_unit] / units[output_unit]
-    return f"Результат: {round(result, 6)} {output_unit}"
+    return converter(value, input_unit, output_unit, units)
 
 
 def convert_volume(value, input_unit, output_unit):
@@ -44,11 +42,7 @@ def convert_volume(value, input_unit, output_unit):
         "м3": 1000000
     }
 
-    if input_unit not in units or output_unit not in units:
-        return "Неизвестная единица"
-
-    result = value * units[input_unit] / units[output_unit]
-    return f"Результат: {round(result, 6)} {output_unit}"
+    return converter(value, input_unit, output_unit, units)
 
 
 def convert_mass(value, input_unit, output_unit):
@@ -62,11 +56,7 @@ def convert_mass(value, input_unit, output_unit):
         "мт": 1000000000000000
     }
 
-    if input_unit not in units or output_unit not in units:
-        return "Неизвестная единица"
-
-    result = value * units[input_unit] / units[output_unit]
-    return f"Результат: {round(result, 6)} {output_unit}"
+    return converter(value, input_unit, output_unit, units)
 
 
 def convert_area(value, input_unit, output_unit):
@@ -77,8 +67,4 @@ def convert_area(value, input_unit, output_unit):
         "км2": 1000000000000
     }
 
-    if input_unit not in units or output_unit not in units:
-        return "Неизвестная единица"
-
-    result = value * units[input_unit] / units[output_unit]
-    return f"Результат: {round(result, 6)} {output_unit}"
+    return converter(value, input_unit, output_unit, units)
