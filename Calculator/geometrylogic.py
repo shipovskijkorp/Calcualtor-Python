@@ -30,14 +30,7 @@ def trapezoid_check(a, b, c, d, h):
         return False
     return True
 
-def sp():
-    return "Выбери P или S"
 
-def sl():
-    return "Выбери L или S"
-
-def sv():
-    return "Выбери S или V"
 
 def square(a, action):
     a = make_positive(a)
