@@ -155,44 +155,152 @@ def main():
                     print("Операция не найдена")
 
             elif main_choice == "spv":
-                print("Доступные фигуры:\nquad, rect, paral, trian, trap, okr, oval\nqub, par, spher, con, cil") 
-                figure = input() 
+                print("Доступные фигуры:\nquad, rect, paral, trian, trap, okr, oval\nqub, par, spher, con, cil")
+                figure = input("Введите фигуру: ").strip().lower()
 
                 if figure == "quad":
                     print(sp())
-                    action = input("Введите действие: ")
-                    x = float(input("Введите сторону a: "))
-                    print("Результат: ",square(x, action))
+                    action = input("Введите действие: ").strip().lower()
+                    a = float(input("Введите сторону a: "))
+                    print("Результат:", square(a, action))
 
                 elif figure == "rect":
                     print(sp())
-                    action = input("Введите действие: ")
-                    x = float(input("Введите сторону a: "))
-                    y = float(input("Введите сторону b: "))
-                    print("Результат: ",rectangle(x, y, action))
+                    action = input("Введите действие: ").strip().lower()
+                    a = float(input("Введите сторону a: "))
+                    b = float(input("Введите сторону b: "))
+                    print("Результат:", rectangle(a, b, action))
 
                 elif figure == "paral":
                     print(sp())
-                    action = input("Введите действие: ")
-                    x = float(input("Введите основание a: "))
+                    action = input("Введите действие: ").strip().lower()
+                    a = float(input("Введите основание a: "))
+
                     if action == "p":
-                        y = float(input("Введите сторону b: "))
+                        b = float(input("Введите сторону b: "))
+                        print("Результат:", paral(a, b, action))
+
                     elif action == "s":
-                        y = float(input("Введите высоту h: "))   
-                    print("Результат: ",paral(x, y, action))
+                        h = float(input("Введите высоту h: "))
+                        print("Результат:", paral(a, h, action))
+
+                    else:
+                        print("Операция не найдена")
 
                 elif figure == "trian":
+                    print(sp())
+                    action = input("Введите действие: ").strip().lower()
+
                     if action == "s":
-                        print(trian_form_menu())
+                        print(trian_form_menu_s())
                         choice = input("Введите номер формулы: ").strip()
-                        result = triangle_area(choice)
-                        print("Результат:", result)
+
+                        if choice == "1":
+                            a = float(input("Введите сторону a: "))
+                            h = float(input("Введите высоту h: "))
+                            print("Результат:", triangle_area_1(a, h))
+
+                        elif choice == "2":
+                            a = float(input("Введите сторону a: "))
+                            b = float(input("Введите сторону b: "))
+                            alpha = float(input("Введите угол alpha в градусах: "))
+                            print("Результат:", triangle_area_2(a, b, alpha))
+
+                        elif choice == "3":
+                            a = float(input("Введите сторону a: "))
+                            b = float(input("Введите сторону b: "))
+                            c = float(input("Введите сторону c: "))
+                            print("Результат:", triangle_area_3(a, b, c))
+
+                        elif choice == "4":
+                            a = float(input("Введите сторону a: "))
+                            b = float(input("Введите сторону b: "))
+                            c = float(input("Введите сторону c: "))
+                            r = float(input("Введите радиус описанной окружности R: "))
+                            print("Результат:", triangle_area_4(a, b, c, r))
+
+                        else:
+                            print("Формула не найдена")
+
                     elif action == "p":
-                        x = float(input("Введите сторону a: "))
-                        y = float(input("Введите сторону b: ")) 
+                        a = float(input("Введите сторону a: "))
+                        b = float(input("Введите сторону b: "))
                         c = float(input("Введите сторону c: "))
-                        print("Результат: ",triangle_perimetr(a,b,c))     
-                    
+                        print("Результат:", triangle_perimetr(a, b, c))
+
+                    else:
+                        print("Операция не найдена")
+
+                elif figure == "trap":
+                    print(sp())
+                    action = input("Введите действие: ").strip().lower()
+
+                    if action == "p":
+                        a = float(input("Введите основание a: "))
+                        b = float(input("Введите основание b: "))
+                        c = float(input("Введите сторону c: "))
+                        d = float(input("Введите сторону d: "))
+                        print("Результат:", trapezoid(a, b, c, d, 0, action))
+
+                    elif action == "s":
+                        a = float(input("Введите основание a: "))
+                        b = float(input("Введите основание b: "))
+                        h = float(input("Введите высоту h: "))
+                        print("Результат:", trapezoid(a, b, 0, 0, h, action))
+
+                    else:
+                        print("Операция не найдена")
+
+                elif figure == "okr":
+                    print(sl())
+                    action = input("Введите действие: ").strip().lower()
+                    r = float(input("Введите радиус r: "))
+                    print("Результат:", circle(r, action))
+
+                elif figure == "oval":
+                    print(sl())
+                    action = input("Введите действие: ").strip().lower()
+                    a = float(input("Введите полуось a: "))
+                    b = float(input("Введите полуось b: "))
+                    print("Результат:", oval(a, b, action))
+
+                elif figure == "qub":
+                    print(sv())
+                    action = input("Введите действие: ").strip().lower()
+                    a = float(input("Введите сторону a: "))
+                    print("Результат:", cube(a, action))
+
+                elif figure == "par":
+                    print(sv())
+                    action = input("Введите действие: ").strip().lower()
+                    a = float(input("Введите длину a: "))
+                    b = float(input("Введите ширину b: "))
+                    c = float(input("Введите высоту c: "))
+                    print("Результат:", box(a, b, c, action))
+
+                elif figure == "spher":
+                    print("Выбери S или V")
+                    action = input("Введите действие: ").strip().lower()
+                    r = float(input("Введите радиус r: "))
+                    print("Результат:", sphere(r, action))
+
+                elif figure == "con":
+                    print("Выбери S или V")
+                    action = input("Введите действие: ").strip().lower()
+                    r = float(input("Введите радиус r: "))
+                    h = float(input("Введите высоту h: "))
+                    print("Результат:", cone(r, h, action))
+
+                elif figure == "cil":
+                    print("Выбери S или V")
+                    action = input("Введите действие: ").strip().lower()
+                    r = float(input("Введите радиус r: "))
+                    h = float(input("Введите высоту h: "))
+                    print("Результат:", cylinder(r, h, action))
+
+                else:
+                    print("Операция не найдена")
+                                
             else:
                 print("Операция не найдена")
 
