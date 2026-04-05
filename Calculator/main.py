@@ -19,7 +19,7 @@ def main():
                     "Во избежание возможных проблем, пожалуйста удалите текущий конфиг\n"
                     "Он будет создан автоматически"
                 )
-                break   
+                break
 
             main_choice = input(
                 "Что вы хотите: \n"
@@ -38,14 +38,14 @@ def main():
             elif main_choice == "info":
                 print(
                     "Версия калькулятора на языке Python\n"
-                    f"Версия: "(CURRENT_VERSION), "\n"
+                    f"Версия: {CURRENT_VERSION}\n"
                     "Автор: ShipovskijKorp\n"
                     "devblog: 20\n"
                     "Tg: https://t.me/+_9Ho35Hbbe8zOTEy"
                 )
 
-            elif main_choice == "config":  
-                print("\nТекущие настройки: ",config,"\n")    
+            elif main_choice == "config":
+                print("\nТекущие настройки: ", config, "\n")
 
             elif main_choice == "cal":
                 cal_choice = input(
@@ -219,6 +219,18 @@ def main():
                             r = float(input("Введите радиус описанной окружности R: "))
                             print("Результат:", triangle_area_4(a, b, c, r))
 
+                        elif choice == "5":
+                            a = float(input("Введите сторону a: "))
+                            b = float(input("Введите сторону b: "))
+                            c = float(input("Введите сторону c: "))
+                            r = float(input("Введите радиус вписанной окружности r: "))
+                            print("Результат:", triangle_area_5(a, b, c, r))
+
+                        elif choice == "6":
+                            c = float(input("Введите сторону c: "))
+                            h = float(input("Введите высоту h к стороне c: "))
+                            print("Результат:", triangle_area_6(c, h))
+
                         else:
                             print("Формула не найдена")
 
@@ -240,13 +252,25 @@ def main():
                         b = float(input("Введите основание b: "))
                         c = float(input("Введите сторону c: "))
                         d = float(input("Введите сторону d: "))
-                        print("Результат:", trapezoid(a, b, c, d, 0, action))
+                        print("Результат:", trapezoid_perimetr(a, b, c, d))
 
                     elif action == "s":
-                        a = float(input("Введите основание a: "))
-                        b = float(input("Введите основание b: "))
-                        h = float(input("Введите высоту h: "))
-                        print("Результат:", trapezoid(a, b, 0, 0, h, action))
+                        print(trapezoid_form_menu_s())
+                        choice = input("Введите номер формулы: ").strip()
+
+                        if choice == "1":
+                            a = float(input("Введите основание a: "))
+                            b = float(input("Введите основание b: "))
+                            h = float(input("Введите высоту h: "))
+                            print("Результат:", trapezoid_area_1(a, b, h))
+
+                        elif choice == "2":
+                            m = float(input("Введите среднюю линию m: "))
+                            h = float(input("Введите высоту h: "))
+                            print("Результат:", trapezoid_area_2(m, h))
+
+                        else:
+                            print("Формула не найдена")
 
                     else:
                         print("Операция не найдена")
@@ -254,8 +278,39 @@ def main():
                 elif figure == "okr":
                     print(sl())
                     action = input("Введите действие: ").strip().lower()
-                    r = float(input("Введите радиус r: "))
-                    print("Результат:", circle(r, action))
+
+                    if action == "l":
+                        print(trian_form_menu_l())
+                        choice = input("Введите номер формулы: ").strip()
+
+                        if choice == "1":
+                            r = float(input("Введите радиус r: "))
+                            print("Результат:", circle_length_1(r))
+
+                        elif choice == "2":
+                            d = float(input("Введите диаметр d: "))
+                            print("Результат:", circle_length_2(d))
+
+                        else:
+                            print("Формула не найдена")
+
+                    elif action == "s":
+                        print(circle_area_menu())
+                        choice = input("Введите номер формулы: ").strip()
+
+                        if choice == "1":
+                            r = float(input("Введите радиус r: "))
+                            print("Результат:", circle_area_1(r))
+
+                        elif choice == "2":
+                            d = float(input("Введите диаметр d: "))
+                            print("Результат:", circle_area_2(d))
+
+                        else:
+                            print("Формула не найдена")
+
+                    else:
+                        print("Операция не найдена")
 
                 elif figure == "oval":
                     print(sl())
@@ -281,26 +336,82 @@ def main():
                 elif figure == "spher":
                     print("Выбери S или V")
                     action = input("Введите действие: ").strip().lower()
-                    r = float(input("Введите радиус r: "))
-                    print("Результат:", sphere(r, action))
+
+                    if action == "s":
+                        r = float(input("Введите радиус r: "))
+                        print("Результат:", sphere(r, action))
+
+                    elif action == "v":
+                        print(sphere_form_menu())
+                        choice = input("Введите номер формулы: ").strip()
+
+                        if choice == "2":
+                            r = float(input("Введите радиус r: "))
+                            print("Результат:", sphere(r, action))
+
+                        elif choice == "3":
+                            d = float(input("Введите диаметр d: "))
+                            print("Результат:", sphere_volume_d(d))
+
+                        else:
+                            print("Формула не найдена")
+
+                    else:
+                        print("Операция не найдена")
 
                 elif figure == "con":
                     print("Выбери S или V")
                     action = input("Введите действие: ").strip().lower()
-                    r = float(input("Введите радиус r: "))
-                    h = float(input("Введите высоту h: "))
-                    print("Результат:", cone(r, h, action))
+
+                    if action == "s":
+                        print(cone_form_menu())
+                        choice = input("Введите номер формулы: ").strip()
+                        r = float(input("Введите радиус r: "))
+                        h = float(input("Введите высоту h: "))
+
+                        if choice == "1":
+                            print("Результат:", cone_area_full(r, h))
+                        elif choice == "2":
+                            print("Результат:", cone_area_side(r, h))
+                        else:
+                            print("Формула не найдена")
+
+                    elif action == "v":
+                        r = float(input("Введите радиус r: "))
+                        h = float(input("Введите высоту h: "))
+                        print("Результат:", cone_volume(r, h))
+
+                    else:
+                        print("Операция не найдена")
 
                 elif figure == "cil":
                     print("Выбери S или V")
                     action = input("Введите действие: ").strip().lower()
-                    r = float(input("Введите радиус r: "))
-                    h = float(input("Введите высоту h: "))
-                    print("Результат:", cylinder(r, h, action))
+
+                    if action == "s":
+                        print(cylinder_form_menu())
+                        choice = input("Введите номер формулы: ").strip()
+                        r = float(input("Введите радиус r: "))
+                        h = float(input("Введите высоту h: "))
+
+                        if choice == "1":
+                            print("Результат:", cylinder_area_full(r, h))
+                        elif choice == "2":
+                            print("Результат:", cylinder_area_side(r, h))
+                        else:
+                            print("Формула не найдена")
+
+                    elif action == "v":
+                        r = float(input("Введите радиус r: "))
+                        h = float(input("Введите высоту h: "))
+                        print("Результат:", cylinder_volume(r, h))
+
+                    else:
+                        print("Операция не найдена")
 
                 else:
                     print("Операция не найдена")
-                                
+
             else:
                 print("Операция не найдена")
 
