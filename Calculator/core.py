@@ -113,7 +113,7 @@ def bmi(height, weight):
 
     return f"{message}Результат: {round(index, 1)}"
 
-def calculate_expression(expr):
+def calculator_main_function(expr):
     expr = expr.replace("^", "**")
     allowed = "0123456789+-*/(). %"
 

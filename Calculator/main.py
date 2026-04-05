@@ -1,5 +1,5 @@
 from config import load_config, CURRENT_VERSION, DEFAULT_CONFIG
-from core import generate_password, random_number, urv, dsc, bmi, calculate_expression
+from core import generate_password, random_number, urv, dsc, bmi, calculator_main_function
 from converters import (convert_temp, convert_dist, convert_speed, convert_volume, convert_mass, convert_area)
 from geometry import *
 
@@ -38,14 +38,14 @@ def main():
             elif main_choice == "info":
                 print(
                     "Версия калькулятора на языке Python\n"
-                    "Версия: 3.0 \n"
+                    f"Версия: "(CURRENT_VERSION), "\n"
                     "Автор: ShipovskijKorp\n"
                     "devblog: 20\n"
                     "Tg: https://t.me/+_9Ho35Hbbe8zOTEy"
                 )
 
             elif main_choice == "config":  
-                print("\nТекущие настройки: ",DEFAULT_CONFIG,"\n")    
+                print("\nТекущие настройки: ",config,"\n")    
 
             elif main_choice == "cal":
                 cal_choice = input(
@@ -58,8 +58,8 @@ def main():
                 ).strip().lower()
 
                 if cal_choice == "cal":
-                    expr = input("Введи выражение: ").strip()
-                    print(calculate_expression(expr))
+                    calc_input = input("Введи выражение: ").strip()
+                    print(calculator_main_function(calc_input))
 
                 elif cal_choice == "urv":
                     a = int(input("Введите коэффициент x^2: "))
